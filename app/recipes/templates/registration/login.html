@@ -1,0 +1,170 @@
+<!-- <style>
+    * {
+    margin: 0;
+    pad: 0;
+    box-sizing: border-box;
+    direction: rtl;
+    text-align: right;
+}
+
+main {
+    direction: rtl;
+    min-height: 100vh;
+    background: linear-gradient(to right top, #ff9999,#ffc1cc);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bottom-button {
+    display: flex;
+}
+
+.bottom-button button {
+    float: right;
+}
+.nav ul, .nav ul li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 3rem;
+    
+}
+.nav ul.icons {
+    display: flex;
+    align-items: center;
+    
+}
+.glass {
+    background: white;
+    min-height: 80vh;
+    width : 60%;
+    background: linear-gradient(to right bottom,
+                                 rgba(255,255,255,0.7),
+                                 rgba(204, 165, 165, 0.3));
+    border-radius: 2rem;
+    z-index: 3;
+    backdrop-filter: blur(0.7rem);
+}
+hr.short-line {
+    display: none;
+    width: 50%;
+    margin-right: 25%;
+}
+form,p {
+    padding-right: 0.5rem;
+    padding-top: 0.5rem;
+    direction: rtl;
+}
+form .text-line {
+    font-size: small;
+}
+.top h3, .top h1 {
+    text-align: center;
+    padding-top: 2rem;
+}
+.nav a {
+    padding-top: 0.2rem;
+}
+.nav h3,h4 {
+    text-align: right;
+}
+.circle1,.circle2{
+    background: white;
+
+    background: linear-gradient(to right bottom,
+                                 rgba(255,255,255,0.9),
+                                 rgba(255,255,255,0.1));
+    height: 15rem;
+    width: 15rem;
+    position: absolute ;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.circle1 {
+    top: 5%;
+    right: 6%;
+}
+.circle2 {
+    bottom: 5%;
+    left: 6%;
+
+}
+#db_msg {
+    background-color: lightgreen;
+    text-align: right;
+    direction: rtl;
+}
+.errorField {
+    background-color: lightcoral;
+    text-align: right;
+    direction: rtl;
+}
+form {
+    height: auto;
+    direction: rtl;
+    position: relative;
+    float: right;
+}
+.box {
+    /* border: 5px solid; */
+    height: auto;
+
+}
+.box h1 {
+    text-align: center;
+    padding-top: 2rem;
+}
+.box li {
+    padding-top: 0.5rem;
+}
+.text-box {
+    direction: rtl;
+    text-align: right;
+    background-color: white;
+    height: auto;
+    width: 300px;
+    margin: 5px;
+    margin-right: 50px;
+    padding-right: 5px;
+    position:absolute;
+    float: left;
+    top:200px;
+}
+
+.text-box p {
+    margin: 3px;
+
+}
+
+#imgbox {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+</style> -->
+{% extends "base.html" %}
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B-Shuli</title>
+    <link rel="stylesheet" href="../ren/static/recipes/style.css">
+</head>
+{% block content %}
+<div class="box" style="padding-right: 40%;padding-top: 20px;">
+    <h2>כניסה למערכת</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <!-- {{ form.as_p }} -->
+        <p>שם משתמש/ת:</p>
+        <p>{{ form.username }}</p>
+        <p>סיסמה:</p>
+        <p>{{ form.password }}</p> <br>
+
+        <button type="submit">Log In</button>
+    </form>
+</div>
+{% endblock %}

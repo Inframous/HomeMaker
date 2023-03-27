@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<div class="top" id='external-to-base'>
+    <h1>מחיקת מתכון</h1>
+    <hr>
+</div>
+
+<div class="display-box">
+    
+    <h1>{{ recipe.title }}</h1>
+    <br><br>
+    <p>האם למחוק את המתכון ל: {{ recipe.title }} ???</p>
+<form action="" method="POST">
+    {% csrf_token %}
+    <br><br>
+    <input type="submit" value="מחיקת המתכון">
+    <button type="text" onclick="window.location.href='{% url 'show_recipe' recipe.id %}'">חזרה לעמוד המתכון</button>
+</form>
+</div>
+</div>
+{% endblock %}
+
+
+
+

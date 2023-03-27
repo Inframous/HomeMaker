@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="top">
+    <h1>חיפוש מתכון</h1>
+</div>
+
+    <hr>
+    <div class="box">
+        <form action="{% url 'search_db' %}" method="POST">
+            {% csrf_token %}
+            <!-- <input type="search" class='form-control me-2' name="searched_item" placeholder="חיפוש מתכון..." aria-label="Search"> -->
+                <p>{{ form.title  }}</p>
+                <p>{{ form.mealcat  }}</p>
+            <button type="submit">חיפוש</button>
+
+            <br><br>
+            {% if searched_recipe %}
+                <h4>תוצאות חיפוש עבור:  {{ search_term }}</h4>
+                <br>
+                <br>
+                {% for recipe in searched_recipe %}
+                    <li style="margin-right: 10px;">
+                        <a href="{% url 'show_recipe' recipe.id %}" style="margin-right: 3px;">{{ recipe.title }}</a> <br>
+                    </li>
+                {% endfor %}
+            {% else %}
+                <h3 style="padding-right: 3px;">נא להקליד משהו בשורת החיפוש</h3>
+            {% endif %}
+        </form>
+    </div>
+    
+        <br><br><br>
+
+    </form>
+</div>
+</style>
+
+<div id="search-stuff">
+</div>
+
+
+
+</div>
+{% endblock %}

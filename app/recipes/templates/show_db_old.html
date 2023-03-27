@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>hello</h3>
+{{ context }}
+{{ all_recipes }}
+<style>
+    #db_msg {
+        background-color: lightgreen;
+        text-align: right;
+        direction: rtl;
+    }
+    .errorField {
+        background-color: lightcoral;
+        text-align: right;
+        direction: rtl;
+    }
+    form {
+        height: auto;
+        direction: rtl;
+        position: relative;
+
+    }
+    .box {
+        direction: rtl;
+        overflow: scroll;
+        opacity: 0.9;
+        background-color: #EEEEEE;
+        border: 5px solid;
+        height:740px;
+        width: 600px;
+        float: right;
+        position: relative;
+
+    }
+    
+    p {
+        opacity: 1;
+        color: black;
+    }
+    .top {
+        width: 100%;
+        float: right;
+        text-align: center;
+    }
+    .box h1 {
+        text-align: center;
+    }
+    .row {
+        float: right;
+    }
+</style>
+<div class="top" id='external-to-base'>
+    <h1>רשימת מתכונים</h1>
+    <hr>
+</div>
+<div class="box">
+    {% for item in context %}
+    <p>{{ item }}</p>
+    <p>{{ item.source }}</p>
+    <p>{{ item.mealtype }}</p>
+    <p>{{ item.mealcat }}</p>
+    <p>{{ item.ingredients }}</p>
+    <p>{{ item.instructions }}</p>
+    <hr>
+    {% endfor %}
+</div>
+
+
+
+</div>
+
+{% endblock %} 

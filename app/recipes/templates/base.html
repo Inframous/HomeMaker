@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B-Shuli</title>
+    <link rel="stylesheet" href="{% static 'recipes/style.css' %}">
+</head>
+<body>
+    <main>
+        <section class="glass">
+            <div class="top">
+            <div class="nav">
+                <ul>
+                    {% if user.is_authenticated %}
+                    <li><a class="selected" href="/">🏠 בית</a></li>
+                    <li><a class="selected" href="{% url 'new_recipe' %}">🗒️ מתכון חדש</a></li>
+                    <li><a class="selected" href="{% url 'search_db' %}">🔍חיפוש מתכון</a></li>
+                    <li><a class="selected" href="{% url 'show_db' %}">📖 כל המתכונים</a></li>
+                    <li><a class="selected" href="{% url 'logout' %}">יציאה</a></li>
+                    {% endif %}
+            </ul>
+            </div>
+            <div id="main">
+                <div>
+                    {% for message in messages %}
+                    <div class="message" id="db_msg">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="external-block">
+                {% block content %} 
+            
+                {% endblock %}
+            </div>
+            </div>
+        </section>
+    </main>
+    <div class="circle1"></div>
+    <div class="circle2"></div>
+</body>
+</html>
+

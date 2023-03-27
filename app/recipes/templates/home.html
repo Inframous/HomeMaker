@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="box" style="margin-right: 40px;">
+    
+    {% if user.is_authenticated %}
+    <br><br><br>
+    <p1>שלום {{ user.first_name }},</p1>
+    <br>
+        <p1>את/ה מחובר/ת למערכת.</p1>
+    <br><br><br><br>
+
+    <h4>מתכונים אחרונים:</h4>
+    {% if last_five_entries %}
+        {% for entry in last_five_entries %}
+        <li style="margin-right: 10px;">
+            <a href="{% url 'show_recipe' entry.id %}" style="margin-right: 3px;">{{ entry.title }}</a> <br>
+        </li>
+        {% endfor %}
+        <br>
+    {% endif %}
+    
+
+    {% else %}
+        <h3> Please Login</h3>
+        <a style="margin-right: 30;" href="{% url 'login' %}"> Login Page </a>
+    {% endif %}
+
+</div>
+{% endblock %}

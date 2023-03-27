@@ -1,0 +1,36 @@
+# Specifying base image
+FROM python:3.8.0
+
+# Creating the user
+# RUN addgroup --system dockeruser && adduser --system --group dockeruser
+
+# For our home directory path
+ENV HOME=/home
+# Diasbles generation of pyc files
+ENV PYTHONDONTWRITEBYTECODE 1
+# stdout and stderr streams are not buffered and sent straight to your terminal
+ENV PYTHONUNBUFFERED 1
+
+# Setting work directory
+WORKDIR $HOME/app
+
+# Copying the project data into work directory
+COPY requirements.txt $HOME/app
+
+# Installing dependencies
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
+
+COPY . $HOME/app
+# Changing ownership of all files and folders in work dir to user
+# RUN chown -R dockeruser:dockeruser $HOME
+# RUN chmod +x ${HOME}/app/docker-entrypoint.sh
+
+# Changing to user
+# USER dockeruser
+
+# Runnnig docker-entrypoint.sh the the main as the container's proccess.
+CMD [ "/home/app/docker-entrypoint.sh" ] 
+
+# # Exposing port inside the container
+# EXPOSE 5000

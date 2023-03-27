@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block content %}
+{% if recipe %}
+
+<div class="top" id='external-to-base'>
+    <h1>{{ recipe.title }}</h1>
+    <hr>
+</div>
+
+</div>
+    <div class="display-box">
+            <p>מקור: {{ recipe.source }}<br>
+
+            מתאריך: {{ recipe.date_created }}</p><br>
+            <hr class="short-line">
+            <div class="sm-box" style="">
+                
+                <p class="tag-line">
+                    מנה:
+                    {{ recipe.return_type }}
+                </p>
+                <p class="tag-line">
+                    קטגוריות:
+                    {{ recipe.return_cat}}
+                </p>
+
+            </div>
+            <br>
+            <hr class="short-line">
+            <br>
+            <div class="med-box">
+                <h4 style="margin-right:5px; margin-bottom: 5px;">רשימת מצרכים</h4>
+                {% for item in recipe.parse_ingredients %}
+                <!-- <p style="margin: 0px;font-size: 14px;">
+                    {{ item }}
+                </p> -->
+                <li style="margin-right: 10px; font-size: 14px;">{{ item }}</li>
+                    {% endfor %}
+                <br>
+                
+                <hr class="short-line">
+                <br>    
+            </div>
+            <div class="med-box">
+                <h4 style="margin-top:0px">אופן ההכנה</h4>
+                <p style="margin: 0px;font-size: 14px;">
+                    {{ recipe.instructions | safe }}
+                
+                </p>
+            </div>
+{% endif %}
+        <div id="imgbox">
+            {% if recipe.image %}
+            <tr>
+                
+                <td><img src="{{ recipe.image.url }}" width="240" /></td>
+            </tr>
+            {% else %}
+                <p>אין תמונה למתכון זה</p>
+            {% endif %}
+            
+        </div>
+        <div>
+            <button onclick="window.location.href='{% url 'edit_recipe' recipe.id %}'">עריכת מתכון</button>
+            <button onclick="window.location.href='{% url 'delete_recipe' recipe.id %}'">מחיקת מתכון</button>
+        </div>
+        <br><br><br>
+    </div>
+
+
+
+</div>
+{% endblock %}
+

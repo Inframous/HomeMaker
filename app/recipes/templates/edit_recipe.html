@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="top">
+    <h1>עריכת מתכון</h1>
+</div>
+
+<hr>
+<h3>{{ recipe.title }}</h3>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% load static %}
+        <p>{{ form.title | as_crispy_field }}</p>
+        <p>{{ form.source | as_crispy_field }}</p>
+        <p>{{ form.mealtype | as_crispy_field }}</p>
+        <p>{{ form.mealcat | as_crispy_field }}</p>
+        <p>{{ form.ingredients | as_crispy_field }} {{ form.instructions | as_crispy_field}}</p>
+        <p> {{ form.media }}</p>
+        <p>{{ form.image | as_crispy_field }}</p>
+        <button type="submit" class="btn btn-primary btn-sm">שמירת המתכון</button>
+        <br><br><br>
+
+    </form>
+</div>
+{% endblock %}

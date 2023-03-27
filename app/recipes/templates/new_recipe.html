@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<!-- <style>
+    .django-ckeditor-widget{
+  width: 100px;
+}
+</style> -->
+
+<div class="top">
+    <h1>יצירת מתכון חדש</h1>
+</div>
+
+    <hr>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p class="text-line">במסך זה ניתן להכניס מתכון חדש ל"בישולי".<br>
+         מומלץ לציין את סוג המנה (ראשונה, עיקרית או קינוח),<br> ולשייך לקטגוריות חיפוש השונות.</p>
+
+        <p>{{ form.title | as_crispy_field }}</p>
+        <p>{{ form.source | as_crispy_field }}</p>
+        <p>{{ form.mealtype | as_crispy_field }}</p>
+        <p>{{ form.mealcat | as_crispy_field }}</p>
+        <p>{{ form.ingredients | as_crispy_field }}</p>
+        <p>{{ form.instructions | as_crispy_field }}</p>
+        <p>{{ form.media }}</p>
+            {% load static %}
+            <!-- <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+            <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script> -->
+        </p>
+        <p>{{ form.image | as_crispy_field }}</p>
+        <button type="submit" class="btn btn-primary btn-sm">שמירת מתכון חדש</button>
+        <br><br><br>
+
+    </form>
+</div>
+{% endblock %}

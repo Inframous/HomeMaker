@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="top" id='external-to-base'>
+    <h1>רשימת המתכונים</h1>
+    <hr>
+</div>
+<div class="box">    
+    {% for recipe in all_recipes %}
+    <li style="padding-right: 5px;">
+        <a href="{% url 'show_recipe' recipe.id %}">{{ recipe.title }}</a>
+    </li>
+    {% endfor %}
+</div>
+
+
+
+</div>
+
+{% endblock %} 
