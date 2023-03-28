@@ -5,10 +5,12 @@
     
     {% if user.is_authenticated %}
     <br><br><br>
-    <p1>שלום {{ user.first_name }},</p1>
+    <p1>שלום {{ user.get_short_name }},</p1>
     <br>
         <p1>את/ה מחובר/ת למערכת.</p1>
-    <br><br><br><br>
+    <br><br>
+    <p style="direction: rtl;">אתר זה הינו אתר דמו בלבד והרשומות בו לא יתעדכנו/ישתנו/ימחקו באמת.</p>
+    <br><br>
 
     <h4>מתכונים אחרונים:</h4>
     {% if last_five_entries %}

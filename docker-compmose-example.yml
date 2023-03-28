@@ -40,7 +40,7 @@ services:
     env_file:
       - ./.env.db
     volumes:
-      - /home/gabe/PyhtonProj/b-shuli-db:/data/postgres
+      - b-shuli-db:/data/postgres
     networks:
       - b-shuli-network
 

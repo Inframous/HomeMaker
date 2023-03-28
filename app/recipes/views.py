@@ -38,6 +38,10 @@ def search_db(request):
         if request.method == 'POST':
             title = request.POST.get('title', '')
             mealcat = request.POST.get('mealcat', '')
+            if title == '' and mealcat =='':
+                messages.error(request, "לא נתקבלו ערכים לחיפוש.")
+                form = SearchForm()
+                return render(request, 'search_db.html', {'form': form})
 
             query = Q()
             for search_term in [title, mealcat]:
@@ -65,9 +69,9 @@ def new_recipe(request):
             form = RecipeForm(request.POST, request.FILES)
             if form.is_valid():
                 print(form.files)
-                form.save()
+                # form.save()
                 form = RecipeForm()
-                messages.success(request, "המתכון נשמר בהצלחה!")
+                messages.success(request, "המתכון נשמר בהצלחה! (Demo)")
                 return render(request, 'new_recipe.html', {'form': form})
             else:
                 return render(request, 'new_recipe.html', {'form': form})
@@ -90,8 +94,8 @@ def edit_recipe(request, recipe_id):
             form = RecipeForm(request.POST, request.FILES, instance=recipe)
             if form.is_valid():
                 form = RecipeForm(request.POST, request.FILES, instance=recipe)
-                form.save()
-                messages.success(request, "המתכון עודכן בהצלחה!")
+                # form.save()
+                messages.success(request, "המתכון עודכן בהצלחה! (Demo)")
                 return redirect('show_db')
             else:
                 print(request.POST)
@@ -112,9 +116,8 @@ def delete_recipe(request, recipe_id):
                 return render(request, 'delete_recipe.html', {'recipe':recipe})
 
             elif request.method == 'POST':
-                # delete the band from the database
-                recipe.delete()
-                # redirect to the bands list
+                # recipe.delete()
+                messages.success(request, "המתכון נמחק בהצלחה! (Demo)")
                 return redirect('show_db')
     else:
         return redirect('login')
