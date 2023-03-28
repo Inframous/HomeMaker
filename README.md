@@ -10,7 +10,6 @@ Each recipe can have
 5. Recipe Photo
 
 You're welcome to browse the Demo Site.
-*No new recipes/
 https://bshuli.thegabezone.com
 - username: thecook5790
 - password: cookbook
