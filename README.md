@@ -17,8 +17,9 @@ A host running Docker, Docker Compose and Git.
 
 
 ### Demo Site
-*Demo Site is temporarily offline
+
 You're welcome to browse the Demo Site.
 https://bshuli.thegabezone.com
 - username: thecook5790
 - password: cookbook
+*Demo Site is temporarily offline.
